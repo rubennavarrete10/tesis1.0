@@ -1,5 +1,4 @@
 package com.example.tesis101;
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
@@ -10,10 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import android.content.Context;
+import android.os.Vibrator;
+import android.util.Log;
+
+
 
 public class reconocimientoVoz extends AppCompatActivity {
 
     TextView grabar;
+    private Vibrator vibrator;//VARIABLE DE LA ALARMA
     private static final int RECOGNIZE_SPEECH_ACTIVITY = 1;
 
     @Override
@@ -29,8 +34,22 @@ public class reconocimientoVoz extends AppCompatActivity {
                 startActivityForResult(intent3, 0);
             }
         });
-
         grabar = (TextView) findViewById(R.id.textView3);
+
+        //////////////////////////////////////AQUI ES EL CODIGO DE LA ALARMA////////////////////////////////////////////////////////////////////////////////////////
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator.hasVibrator()) //Si tiene vibrador//
+        {
+
+            //vibra N milisegundos
+            if (true){
+                long tiempo = 500; //en milisegundos
+                vibrator.vibrate(tiempo);
+            }
+        };
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

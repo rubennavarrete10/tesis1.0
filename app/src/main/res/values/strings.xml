@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">tesis101</string>
+    <string name="hearing_loss_asistence">HEARING LOSS ASISTENCE</string>
+    <string name="start">START</string>
+    <string name="my_profile">MY PROFILE</string>
+    <string name="todo">TODO</string>
+    <string name="my_profile">MY PROFILE</string>
+    <string name="nivel_de_hipoacusia">NIVEL DE HIPOACUSIA</string>
+    <string name="profunda">PROFUNDA</string>
+    <string name="severa">SEVERA</string>
+    <string name="nivel_de_alarma">NIVEL DE ALARMA</string>
+    <string name="back">back</string>
+    <string name="perdida_total">PERDIDA TOTAL</string>
+    <string name="voz">voz</string>
+    <string name="back">back</string>
+    <string name="habla_detectda">HABLA DETECTDA</string>
 </resources>
