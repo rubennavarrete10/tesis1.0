@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/hearing_loss_asistence"
+        android:text="hearing loss asistence"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/holo_blue_dark"
@@ -31,7 +31,7 @@
         android:layout_height="118dp"
         android:layout_marginBottom="111dp"
         android:background="@android:color/holo_blue_dark"
-        android:text="@string/start"
+        android:text="start"
         android:textColor="@android:color/black"
         android:textSize="29sp"
         android:textStyle="bold"
@@ -53,14 +53,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:srcCompat="@mipmap/user"
-        android:contentDescription="@string/todo" />
+        android:contentDescription="todo" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="332dp"
-        android:text="@string/my_profile"
+        android:text="my profile"
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
