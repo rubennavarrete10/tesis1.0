@@ -12,7 +12,6 @@ import android.os.Handler;
 
 public class myprofile extends AppCompatActivity {
 
-    private Handler mHandler = new Handler();
     private CheckBox chek1;
     private CheckBox chek2;
     private CheckBox chek3;
@@ -26,6 +25,11 @@ public class myprofile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myprofile);
 
+        chek1 = (CheckBox) findViewById(R.id.checkBox3);
+        chek2 = (CheckBox) findViewById(R.id.checkBox4);
+        chek3 = (CheckBox) findViewById(R.id.checkBox5);
+        valorA = (TextView) findViewById(R.id.textView4);
+
             Button btn2 = (Button) findViewById(R.id.button2);
             btn2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -34,27 +38,40 @@ public class myprofile extends AppCompatActivity {
                     startActivityForResult(intent2, 0);
                 }
             });
-
-            chek1 = (CheckBox) findViewById(R.id.checkBox3);
-            chek2 = (CheckBox) findViewById(R.id.checkBox4);
-            chek3 = (CheckBox) findViewById(R.id.checkBox5);
-            valorA = (TextView) findViewById(R.id.textView4);
-
-            String s = "Estado: " + (chek1.isChecked() ? "Marcado" : "No Marcado");
-            Toast.makeText(this, s, Toast.LENGTH_LONG).show();
-
-            if (chek1.isChecked() == true) {
-                tiempoalarma = 10;
+            chek1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tiempoalarma = 1000;
                 valoralarma = "1 segundo";
-                chek2.setChecked(false);
-                chek3.setChecked(false);
-            }
-            else
-            {
-                valoralarma = "N/A";
-            }
-            valorA.setText(valoralarma);
-
-
+                valorA.setText(valoralarma);
+                chek2.setEnabled(false);
+                chek3.setEnabled(false);
+                  }
+             });
+            chek2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tiempoalarma = 2000;
+                valoralarma = "2 segundo";
+                valorA.setText(valoralarma);
+                chek1.setEnabled(false);
+                chek3.setEnabled(false);
+                }
+            });
+            chek3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tiempoalarma = 4000;
+                valoralarma = "4 segundo";
+                valorA.setText(valoralarma);
+                chek2.setEnabled(false);
+                chek1.setEnabled(false);
+                 }
+             });
+        chek1.setEnabled(true);
+        chek2.setEnabled(true);
+        chek3.setEnabled(true);
+        valoralarma = "N/A";
+        valorA.setText(valoralarma);
     }
     }
