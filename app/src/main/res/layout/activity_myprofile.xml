@@ -124,4 +124,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="108dp"
+        android:layout_height="37dp"
+        android:text="n/a"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="620dp" />
+
 </android.support.constraint.ConstraintLayout>

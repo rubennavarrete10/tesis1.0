@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="109dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:onClick="onClickImgBtnHablar"
-        android:text="voz"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="366dp"
