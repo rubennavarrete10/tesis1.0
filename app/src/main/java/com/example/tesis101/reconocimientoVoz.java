@@ -1,8 +1,11 @@
 package com.example.tesis101;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +20,10 @@ import android.util.Log;
 
 public class reconocimientoVoz extends AppCompatActivity {
 
-    TextView grabar;
+    TextView grabar;//
     private Vibrator vibrator;//VARIABLE DE LA ALARMA
     private static final int RECOGNIZE_SPEECH_ACTIVITY = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +38,20 @@ public class reconocimientoVoz extends AppCompatActivity {
                 startActivityForResult(intent3, 0);
             }
         });
+
         grabar = (TextView) findViewById(R.id.textView3);
-
-        //////////////////////////////////////AQUI ES EL CODIGO DE LA ALARMA////////////////////////////////////////////////////////////////////////////////////////
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        if (vibrator.hasVibrator()) //Si tiene vibrador//
-        {
-
-            //vibra N milisegundos
-            if (true){
-                long tiempo = 500; //en milisegundos
-                vibrator.vibrate(tiempo);
-            }
-        };
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     }
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+
+
         switch (requestCode) {
             case RECOGNIZE_SPEECH_ACTIVITY:
                 if (resultCode == RESULT_OK && null != data) {
@@ -61,6 +59,17 @@ public class reconocimientoVoz extends AppCompatActivity {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String strSpeech2Text = speech.get(0);
                     grabar.setText(strSpeech2Text);
+
+                    if (vibrator.hasVibrator()) //Si tiene vibrador//
+                    {
+                        //vibra N milisegundos
+                        if (true){
+                            long tiempo = 500;
+                            vibrator.vibrate(tiempo);
+                        }
+
+                    }
+
                 }
                 break;
             default:
@@ -70,6 +79,7 @@ public class reconocimientoVoz extends AppCompatActivity {
     public void onClickImgBtnHablar(View v) {
         Intent intentActionRecognizeSpeech = new Intent(
                 RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
 
         // Configura el Lenguaje (Español-México)
         intentActionRecognizeSpeech.putExtra(
@@ -83,4 +93,5 @@ public class reconocimientoVoz extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
 }
