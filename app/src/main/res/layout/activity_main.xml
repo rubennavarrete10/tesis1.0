@@ -42,25 +42,23 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="260dp"
-        android:layout_height="259dp"
+        android:layout_width="189dp"
+        android:layout_height="214dp"
         android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@mipmap/user"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:srcCompat="@mipmap/user"
-        android:contentDescription="todo" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="332dp"
-        android:text="my profile"
+        android:text="PERFIL"
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
