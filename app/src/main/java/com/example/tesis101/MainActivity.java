@@ -18,26 +18,31 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    public int t1=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ImageButton btn = (ImageButton) findViewById(R.id.imageButton2);
+        Button btn1 = (Button) findViewById(R.id.button);
+
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), myprofile.class);
+                Intent intent = new Intent(v.getContext(), myprofile.class);
                 startActivityForResult(intent, 0);
             }
         });
-
-
-        Button btn1 = (Button) findViewById(R.id.button);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent (v.getContext(),reconocimientoVoz.class);
+                Intent intent1 = new Intent(v.getContext(), reconocimientoVoz.class);
+                Bundle extras = getIntent().getExtras();
+                t1 = extras.getInt("tiempo");
+                intent1.putExtra("t1", t1);
                 startActivityForResult(intent1, 0);
             }
         });

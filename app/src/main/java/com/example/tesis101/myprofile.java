@@ -1,5 +1,5 @@
 package com.example.tesis101;
-import android.widget.CheckBox;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,71 +7,87 @@ import android.widget.Toast;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
-import android.os.Handler;
+
 
 
 public class myprofile extends AppCompatActivity {
 
-    private CheckBox chek1;
-    private CheckBox chek2;
-    private CheckBox chek3;
-    TextView valorA;
-    String valoralarma;
-    int tiempoalarma=0;
+    public TextView valorA;
+    public TextView alarmA;
+    public int tiempoalarma=0;
 
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String TEXT = "text";
+    public static final String TEXT2 = "text1";
+    private String text1;
+    private String text2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myprofile);
 
-        chek1 = (CheckBox) findViewById(R.id.checkBox3);
-        chek2 = (CheckBox) findViewById(R.id.checkBox4);
-        chek3 = (CheckBox) findViewById(R.id.checkBox5);
         valorA = (TextView) findViewById(R.id.textView4);
+        alarmA = (TextView) findViewById(R.id.textView8);
 
-            Button btn2 = (Button) findViewById(R.id.button2);
-            btn2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent2 = new Intent(v.getContext(), MainActivity.class);
-                    startActivityForResult(intent2, 0);
-                }
-            });
-            chek1.setOnClickListener(new View.OnClickListener() {
+        loadData();
+        updateViews();
+        Button btn2 = (Button) findViewById(R.id.button2);
+        Button btn3 = (Button) findViewById(R.id.checkBox3);
+        Button btn4 = (Button) findViewById(R.id.checkBox4);
+        Button btn5 = (Button) findViewById(R.id.checkBox5);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(v.getContext(), MainActivity.class);
+                intent2.putExtra("tiempo",tiempoalarma);
+                startActivityForResult(intent2, 0);
+                saveData();
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tiempoalarma = 1000;
-                valoralarma = "1 segundo";
-                valorA.setText(valoralarma);
-                chek2.setEnabled(false);
-                chek3.setEnabled(false);
-                  }
-             });
-            chek2.setOnClickListener(new View.OnClickListener() {
+                valorA.setText("1 seg");
+                alarmA.setText("1000ms");
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tiempoalarma = 2000;
-                valoralarma = "2 segundo";
-                valorA.setText(valoralarma);
-                chek1.setEnabled(false);
-                chek3.setEnabled(false);
-                }
-            });
-            chek3.setOnClickListener(new View.OnClickListener() {
+                valorA.setText("2 seg");
+                alarmA.setText("2000ms");
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tiempoalarma = 4000;
-                valoralarma = "4 segundo";
-                valorA.setText(valoralarma);
-                chek2.setEnabled(false);
-                chek1.setEnabled(false);
-                 }
-             });
-        chek1.setEnabled(true);
-        chek2.setEnabled(true);
-        chek3.setEnabled(true);
-        valoralarma = "N/A";
-        valorA.setText(valoralarma);
+            tiempoalarma = 4000;
+            valorA.setText("4 seg");
+            alarmA.setText("4000ms");
+            }
+        });
     }
+    public void saveData(){
+            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.putString(TEXT, valorA.getText().toString());
+            editor.putString(TEXT2,alarmA.getText().toString());
+
+            editor.apply();
+
+            Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
+        }
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        text1 = sharedPreferences.getString(TEXT, "");
+        text2= sharedPreferences.getString(TEXT2,"");
     }
+    public void updateViews() {
+        valorA.setText(text1);
+        alarmA.setText(text2);
+    }
+}

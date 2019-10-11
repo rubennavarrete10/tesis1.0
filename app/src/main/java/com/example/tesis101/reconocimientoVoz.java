@@ -19,7 +19,7 @@ import android.util.Log;
 
 
 public class reconocimientoVoz extends AppCompatActivity {
-
+    public int tfinal=0;
     TextView grabar;//
     private Vibrator vibrator;//VARIABLE DE LA ALARMA
     private static final int RECOGNIZE_SPEECH_ACTIVITY = 1;
@@ -30,6 +30,8 @@ public class reconocimientoVoz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recvoz);
 
+        Bundle extras = getIntent().getExtras();
+        tfinal = extras.getInt("t1");
 
         Button btn3 = (Button) findViewById(R.id.button4);
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +78,8 @@ public class reconocimientoVoz extends AppCompatActivity {
                         {
                             //vibra N milisegundos
                             if (true) {
-                                long tiempo = 500;
-                                vibrator.vibrate(tiempo);
+                                //long tiempo = 500;
+                                vibrator.vibrate(tfinal);
                             }
 
                         }
