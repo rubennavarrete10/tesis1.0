@@ -1,24 +1,16 @@
 package com.example.tesis101;
-
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.speech.RecognizerIntent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-import java.util.ArrayList;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.EditText;
+
 
 public class MainActivity extends AppCompatActivity {
 
     public int t1=0;
+    public int n1=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent1 = new Intent(v.getContext(), reconocimientoVoz.class);
                 Bundle extras = getIntent().getExtras();
-                t1 = extras.getInt("tiempo");
-                intent1.putExtra("t1", t1);
+                t1 = extras.getInt("tipo");
+                n1 = extras.getInt("duracion");
+                intent1.putExtra("t", t1);
+                intent1.putExtra("n", n1);
                 startActivityForResult(intent1, 0);
             }
         });

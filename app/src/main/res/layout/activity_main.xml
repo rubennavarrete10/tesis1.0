@@ -44,8 +44,8 @@
     <ImageButton
         android:id="@+id/imageButton2"
         style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="269dp"
-        android:layout_height="291dp"
+        android:layout_width="243dp"
+        android:layout_height="252dp"
         android:layout_marginBottom="8dp"
         android:background="@mipmap/images"
         android:scaleType="centerCrop"
