@@ -40,6 +40,7 @@ public class myprofile extends AppCompatActivity {
         tiempo = (TextView) findViewById(R.id.textView10);
         durac = (SeekBar) findViewById(R.id.seekBar5);
         durac.setProgress(1);
+        durac.setMin(1);
         durac.setMax(10);
         Button btn2 = (Button) findViewById(R.id.button2);
         Button btn3 = (Button) findViewById(R.id.checkBox3);
