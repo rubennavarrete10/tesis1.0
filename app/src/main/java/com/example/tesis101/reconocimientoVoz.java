@@ -92,7 +92,6 @@ public class reconocimientoVoz extends AppCompatActivity {
                             if (tfinal == 4) {
                                 long tiempo1 = 3000;
                                 vibrator.vibrate(tiempo1);
-
                             }
                             nfinal=nfinal-1;
                         }
