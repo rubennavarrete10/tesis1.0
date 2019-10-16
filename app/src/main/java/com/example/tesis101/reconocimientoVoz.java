@@ -72,11 +72,9 @@ public class reconocimientoVoz extends AppCompatActivity {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String strSpeech2Text = speech.get(0);
                     grabar.setText(strSpeech2Text + tfinal+","+nfinal);
-                    int ciclo=nfinal;
 
                     if (vibrator.hasVibrator()) //Si tiene vibrador//
                     {
-                        do {
                             if (tfinal == 1) {
                                 long tiempo1 = 50 * nfinal;
                                 vibrator.vibrate(tiempo1);
@@ -93,10 +91,6 @@ public class reconocimientoVoz extends AppCompatActivity {
                                 long tiempo1 = 3000;
                                 vibrator.vibrate(tiempo1);
                             }
-                            nfinal=nfinal-1;
-                        }
-                        while (ciclo>=1);
-
                     }
                         break;
                 }

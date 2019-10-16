@@ -138,7 +138,7 @@ public class myprofile extends AppCompatActivity {
     }
     public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        text1 = sharedPreferences.getString(TEXT, "");
+        text1 = sharedPreferences.getString(TEXT,"");
         text2= sharedPreferences.getString(TEXT2,"");
         text3= sharedPreferences.getString(TEXT3,"");
     }
