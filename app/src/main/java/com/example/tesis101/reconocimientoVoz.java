@@ -76,19 +76,16 @@ public class reconocimientoVoz extends AppCompatActivity {
                     if (vibrator.hasVibrator()) //Si tiene vibrador//
                     {
                             if (tfinal == 1) {
-                                long tiempo1 = 50 * nfinal;
-                                vibrator.vibrate(tiempo1);
-                                // long[] pattern = {500, 100, 500, 100};
-                                //vibrator.vibrate(pattern, -1);
+                                long[] pattern = {100, 1000, 100, 1000, 100, 1000};
+                                vibrator.vibrate(pattern, -1);
                             }
                             if (tfinal == 2) {
-                                long tiempo1 = 200 * nfinal;
-                                vibrator.vibrate(tiempo1);
-                                //long[] pattern = {500, 100, 500, 100};
-                                //vibrator.vibrate(pattern, -1);
+
+                                long[] pattern = {50, 300, 50, 300, 50, 300, 50, 300,50, 300, 50, 300, 50, 300, 50, 300, 50, 300, 50, 150};
+                                vibrator.vibrate(pattern, -1);
                             }
                             if (tfinal == 4) {
-                                long tiempo1 = 3000;
+                                long tiempo1 = 3300;
                                 vibrator.vibrate(tiempo1);
                             }
                     }

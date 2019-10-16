@@ -30,6 +30,7 @@ public class myprofile extends AppCompatActivity {
     private String text2="0";
     private String text3="0";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +48,8 @@ public class myprofile extends AppCompatActivity {
         Button btn4 = (Button) findViewById(R.id.checkBox4);
         Button btn5 = (Button) findViewById(R.id.checkBox5);
 
-
-        loadData();
-        updateViews();
-
-
+            loadData();
+            updateViews();
 
 
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +129,6 @@ public class myprofile extends AppCompatActivity {
             editor.putString(TEXT, valorA.getText().toString());
             editor.putString(TEXT2,nivel.getText().toString());
             editor.putString(TEXT3,tiempo.getText().toString());
-
             editor.apply();
 
             Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
