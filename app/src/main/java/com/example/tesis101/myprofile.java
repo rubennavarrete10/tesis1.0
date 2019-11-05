@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
+
+import static java.lang.Boolean.TRUE;
 
 
 public class myprofile extends AppCompatActivity {
@@ -16,6 +19,7 @@ public class myprofile extends AppCompatActivity {
     public TextView nivel;
     public TextView tiempo;
     public SeekBar durac;
+    public Switch auto;
 
     public int tiempoalarma=0;
     public int nivel2=1;
@@ -26,10 +30,12 @@ public class myprofile extends AppCompatActivity {
     public static final String TEXT = "text";
     public static final String TEXT2 = "text2";
     public static final String TEXT3 = "text3";
+    public static final Boolean BOL = TRUE;
+    private Boolean BOL1 = TRUE;
     private String text1="0";
     private String text2="0";
     private String text3="0";
-
+    int a=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +48,15 @@ public class myprofile extends AppCompatActivity {
         durac = (SeekBar) findViewById(R.id.seekBar5);
         durac.setProgress(1);
         durac.setMin(1);
-        durac.setMax(10);
+        durac.setMax(5);
         Button btn2 = (Button) findViewById(R.id.button2);
         Button btn3 = (Button) findViewById(R.id.checkBox3);
         Button btn4 = (Button) findViewById(R.id.checkBox4);
         Button btn5 = (Button) findViewById(R.id.checkBox5);
 
-            loadData();
-            updateViews();
 
+                loadData();
+                updateViews();
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,39 +72,39 @@ public class myprofile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tiempoalarma = 1;
-                valorA.setText("Lento");
                 tiemp=Integer.toString(tiempoalarma);
                 tiempo.setText(tiemp);
                 nivel1= (String) nivel.getText();
                 nivel2=Integer.parseInt(nivel1);
                 tiemp= (String) tiempo.getText();
                 tiempoalarma=Integer.parseInt(tiemp);
+                valorA.setText("Lento, "+tiemp);
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tiempoalarma = 2;
-                valorA.setText("Rapido");
                 tiemp=Integer.toString(tiempoalarma);
                 tiempo.setText(tiemp);
                 nivel1= (String) nivel.getText();
                 nivel2=Integer.parseInt(nivel1);
                 tiemp= (String) tiempo.getText();
                 tiempoalarma=Integer.parseInt(tiemp);
+                valorA.setText("Rapido, "+tiemp);
             }
         });
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tiempoalarma = 4;
-                valorA.setText("Continuo");
                 tiemp=Integer.toString(tiempoalarma);
                 tiempo.setText(tiemp);
                 nivel1= (String) nivel.getText();
                 nivel2=Integer.parseInt(nivel1);
                 tiemp= (String) tiempo.getText();
                 tiempoalarma=Integer.parseInt(tiemp);
+                valorA.setText("Continuo, "+tiemp);
             }
         });
         durac.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -117,9 +123,6 @@ public class myprofile extends AppCompatActivity {
              public void onStopTrackingTouch(SeekBar seekBar) {
              }
         });
-
-
-
 
     }
     public void saveData(){

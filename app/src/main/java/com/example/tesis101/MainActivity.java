@@ -20,12 +20,15 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn = (ImageButton) findViewById(R.id.imageButton2);
         Button btn1 = (Button) findViewById(R.id.button);
 
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), myprofile.class);
                 startActivityForResult(intent, 0);
+                //////////////////////////////////////////////////////////////////////
+                Intent intent1 = new Intent(v.getContext(), reconocimientoVoz.class);
+                intent1.putExtra("B", t1);
+                //////////////////////////////////////////////////////////////////
             }
         });
         btn1.setOnClickListener(new View.OnClickListener() {

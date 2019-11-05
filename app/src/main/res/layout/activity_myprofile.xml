@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:layout_marginBottom="26dp"
-        android:text="PERFIL"
+        android:text="PREFERENCIAS"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/holo_blue_dark"
@@ -89,15 +89,14 @@
         android:id="@+id/textView7"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="209dp"
         android:text="Intensidad de alarma"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="29sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
@@ -128,7 +127,6 @@
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="26dp"
         android:layout_marginTop="78dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="80dp"
@@ -136,20 +134,21 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintEnd_toStartOf="@+id/textView10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:text="Tipo"
+        android:layout_marginTop="363dp"
+        android:layout_marginBottom="50dp"
+        android:text="Preferencia"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
@@ -164,15 +163,16 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="69dp"
+        android:layout_width="154dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="34dp"
-        android:text="0"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="invisible" />
 
     <TextView
         android:id="@+id/textView11"
@@ -190,8 +190,21 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="180dp"
-        android:text="10"
+        android:text="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="315dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="212dp"
+        android:text="Duracion de vibracion"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </android.support.constraint.ConstraintLayout>

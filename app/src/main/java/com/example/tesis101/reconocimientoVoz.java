@@ -16,12 +16,15 @@ import android.os.Vibrator;
 
 
 public class reconocimientoVoz extends AppCompatActivity {
+
     public int tfinal = 0;
+    int a=0;
     public int nfinal;
     TextView grabar;//
     TextView revisar;
     private Vibrator vibrator;//VARIABLE DE LA ALARMA
     private static final int RECOGNIZE_SPEECH_ACTIVITY = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class reconocimientoVoz extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         tfinal = extras.getInt("t");
         nfinal = extras.getInt("n");
+
 
         Button btn3 = (Button) findViewById(R.id.button4);
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +61,6 @@ public class reconocimientoVoz extends AppCompatActivity {
                     "Tú dispositivo no soporta el reconocimiento por voz",
                     Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -71,23 +74,72 @@ public class reconocimientoVoz extends AppCompatActivity {
                     ArrayList<String> speech = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String strSpeech2Text = speech.get(0);
-                    grabar.setText(strSpeech2Text + tfinal+","+nfinal);
+                    //grabar.setText(strSpeech2Text + tfinal+","+nfinal);
 
                     if (vibrator.hasVibrator()) //Si tiene vibrador//
                     {
-                            if (tfinal == 1) {
-                                long[] pattern = {100, 1000, 100, 1000, 100, 1000};
-                                vibrator.vibrate(pattern, -1);
+                        long[] pattern={};
+                        if (tfinal == 1) {
+                            if(nfinal==1)
+                            {
+                                long [] pattern1 = {100, 900};
+                                pattern=pattern1;
                             }
-                            if (tfinal == 2) {
+                            if(nfinal==2)
+                            {
+                                long [] pattern2 = {100, 900, 100, 900};
+                                pattern=pattern2;
+                            }
+                            if(nfinal==3)
+                            {
+                                long [] pattern3 = {100, 900, 100, 900, 100, 900};
+                                pattern=pattern3;
+                            }
+                            if(nfinal==4)
+                            {
+                                long [] pattern4 = {100, 900, 100, 900, 100, 900, 100, 900};
+                                pattern=pattern4;
+                            }
+                            if(nfinal==5)
+                            {
+                                long [] pattern5 = {100, 900, 100, 900, 100, 900, 100, 900, 100, 900};
+                                pattern=pattern5;
+                            }
+                            vibrator.vibrate(pattern, -1);
+                        }
+                        if (tfinal == 2) {
+                            if(nfinal==1)
+                            {
+                                long [] pattern6 = {50, 283, 50, 283, 50, 284};
+                                pattern=pattern6;
+                            }
+                            if(nfinal==2)
+                            {
+                                long [] pattern7 = {50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284};
+                                pattern=pattern7;
+                            }
+                            if(nfinal==3)
+                            {
+                                long [] pattern8 = {50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284};
+                                pattern=pattern8;
+                            }
+                            if(nfinal==4)
+                            {
+                                long [] pattern9 = {50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284};
+                                pattern=pattern9;
+                            }
+                            if(nfinal==5)
+                            {
+                                long [] pattern10 = {50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284,50, 283, 50, 283, 50, 284};
+                                pattern=pattern10;
+                            }
+                            vibrator.vibrate(pattern, -1);
+                        }
+                        if (tfinal == 4) {
 
-                                long[] pattern = {50, 300, 50, 300, 50, 300, 50, 300,50, 300, 50, 300, 50, 300, 50, 300, 50, 300, 50, 150};
-                                vibrator.vibrate(pattern, -1);
-                            }
-                            if (tfinal == 4) {
-                                long tiempo1 = 3300;
-                                vibrator.vibrate(tiempo1);
-                            }
+                            vibrator.vibrate(nfinal*1000);
+                        }
+                        grabar.setText(strSpeech2Text + tfinal+","+nfinal+","+a);
                     }
                         break;
                 }
