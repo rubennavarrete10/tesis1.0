@@ -9,21 +9,25 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ScheduledExecutorService;
+
 import android.content.Context;
 import android.os.Vibrator;
 
 
-
-
 public class reconocimientoVoz extends AppCompatActivity {
 
-    public int tfinal = 0;
-    int a=0;
-    public int nfinal;
+    public int tfinal = 1;
+    int a=1;
+    public int nfinal=1;
     TextView grabar;//
     TextView revisar;
     private Vibrator vibrator;//VARIABLE DE LA ALARMA
     private static final int RECOGNIZE_SPEECH_ACTIVITY = 1;
+
+    Timer tiempo=new Timer();
 
 
     @Override
@@ -35,21 +39,46 @@ public class reconocimientoVoz extends AppCompatActivity {
         tfinal = extras.getInt("t");
         nfinal = extras.getInt("n");
 
-
         Button btn3 = (Button) findViewById(R.id.button4);
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent3 = new Intent(v.getContext(), MainActivity.class);
-                startActivityForResult(intent3, 0);
+                Intent intent4 = new Intent(v.getContext(), MainActivity.class);
+                intent4.putExtra("tipo",tfinal);
+                intent4.putExtra("duracion",nfinal);
+                startActivityForResult(intent4, 0);
+                tiempo.cancel();
+                tiempo.purge();
             }
         });
-
         grabar = (TextView) findViewById(R.id.textView3);
         revisar = (TextView) findViewById(R.id.textView9);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        Intent intentActionRecognizeSpeech = new Intent(
+
+        TimerTask ciclo = new TimerTask() {
+            @Override
+            public void run() {
+                 Intent intentActionRecognizeSpeech = new Intent(
+                RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+             intentActionRecognizeSpeech.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL, "es-MX");
+                 try {
+                     startActivityForResult(intentActionRecognizeSpeech,
+                             RECOGNIZE_SPEECH_ACTIVITY);
+                 } catch (ActivityNotFoundException a) {
+                        Toast.makeText(getApplicationContext(),
+                            "Tú dispositivo no soporta el reconocimiento por voz",
+                            Toast.LENGTH_SHORT).show();
+                 }
+            }
+
+        };
+        tiempo.schedule(ciclo,700,6000);
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        /*Intent intentActionRecognizeSpeech = new Intent(
                 RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intentActionRecognizeSpeech.putExtra(
                 RecognizerIntent.EXTRA_LANGUAGE_MODEL, "es-MX");
@@ -60,13 +89,13 @@ public class reconocimientoVoz extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     "Tú dispositivo no soporta el reconocimiento por voz",
                     Toast.LENGTH_SHORT).show();
-        }
+        }*/
+        ////////////////////////////////////////////////////////////////////////////////////////////
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
 
         switch (requestCode) {
             case RECOGNIZE_SPEECH_ACTIVITY:
@@ -74,7 +103,7 @@ public class reconocimientoVoz extends AppCompatActivity {
                     ArrayList<String> speech = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     String strSpeech2Text = speech.get(0);
-                    //grabar.setText(strSpeech2Text + tfinal+","+nfinal);
+                    grabar.setText(strSpeech2Text + tfinal+","+nfinal);
 
                     if (vibrator.hasVibrator()) //Si tiene vibrador//
                     {
@@ -139,7 +168,6 @@ public class reconocimientoVoz extends AppCompatActivity {
 
                             vibrator.vibrate(nfinal*1000);
                         }
-                        grabar.setText(strSpeech2Text + tfinal+","+nfinal+","+a);
                     }
                         break;
                 }
@@ -147,4 +175,25 @@ public class reconocimientoVoz extends AppCompatActivity {
                         break;
             }
     }
+    /*
+    private void reconocer(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intentActionRecognizeSpeech = new Intent(
+                        RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intentActionRecognizeSpeech.putExtra(
+                        RecognizerIntent.EXTRA_LANGUAGE_MODEL, "es-MX");
+                try {
+                    startActivityForResult(intentActionRecognizeSpeech,
+                            RECOGNIZE_SPEECH_ACTIVITY);
+                } catch (ActivityNotFoundException a) {
+                    Toast.makeText(getApplicationContext(),
+                            "Tú dispositivo no soporta el reconocimiento por voz",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).start();
+
+    }*/
 }

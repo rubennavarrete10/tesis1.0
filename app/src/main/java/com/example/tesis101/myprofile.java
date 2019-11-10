@@ -10,9 +10,6 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static java.lang.Boolean.TRUE;
-
-
 public class myprofile extends AppCompatActivity {
 
     public TextView valorA;
@@ -30,8 +27,6 @@ public class myprofile extends AppCompatActivity {
     public static final String TEXT = "text";
     public static final String TEXT2 = "text2";
     public static final String TEXT3 = "text3";
-    public static final Boolean BOL = TRUE;
-    private Boolean BOL1 = TRUE;
     private String text1="0";
     private String text2="0";
     private String text3="0";
@@ -54,9 +49,8 @@ public class myprofile extends AppCompatActivity {
         Button btn4 = (Button) findViewById(R.id.checkBox4);
         Button btn5 = (Button) findViewById(R.id.checkBox5);
 
-
-                loadData();
-                updateViews();
+        loadData();
+        updateViews();
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override

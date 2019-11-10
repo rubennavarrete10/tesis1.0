@@ -6,11 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-
 public class MainActivity extends AppCompatActivity {
 
-    public int t1=0;
-    public int n1=0;
+    public int t1=1;
+    public int n1=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +19,12 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn = (ImageButton) findViewById(R.id.imageButton2);
         Button btn1 = (Button) findViewById(R.id.button);
 
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), myprofile.class);
                 startActivityForResult(intent, 0);
-                //////////////////////////////////////////////////////////////////////
-                Intent intent1 = new Intent(v.getContext(), reconocimientoVoz.class);
-                intent1.putExtra("B", t1);
-                //////////////////////////////////////////////////////////////////
             }
         });
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -36,12 +32,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent1 = new Intent(v.getContext(), reconocimientoVoz.class);
                 Bundle extras = getIntent().getExtras();
-                t1 = extras.getInt("tipo");
-                n1 = extras.getInt("duracion");
-                intent1.putExtra("t", t1);
-                intent1.putExtra("n", n1);
+                if(extras !=null)
+                {
+                    t1 = extras.getInt("tipo");
+                    n1 = extras.getInt("duracion");
+                    intent1.putExtra("t", t1);
+                    intent1.putExtra("n", n1);
+                }
+                else {
+                    intent1.putExtra("t", t1);
+                    intent1.putExtra("n", n1);
+                }
                 startActivityForResult(intent1, 0);
             }
         });
     }
+
 }
